@@ -8,7 +8,7 @@ import (
 	"unsafe"
 )
 
-func readPassword(fd int) ([]byte, error) {
+func ReadPassword(fd int) ([]byte, error) {
 	var oldState syscall.Termios
 	if _, _, err := syscall.Syscall6(syscall.SYS_IOCTL, uintptr(fd), ioctlReadTermios, uintptr(unsafe.Pointer(&oldState)), 0, 0, 0); err != 0 {
 		return nil, err
